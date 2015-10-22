@@ -18,41 +18,13 @@ public class WorkWithText {
      * @param textNeedPrepares textSentences which will be prepared to work
      * @return return prepared textSentences
      */
-    private String prepareText(String textNeedPrepares) {
+    public static String prepareText(String textNeedPrepares) {
         textNeedPrepares = textNeedPrepares.trim();  // ќбрезаем усики
         String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ");
         return  preparedText;
     }
 
-    /**
-     *
-     * @param text
-     * @return
-     */
-    protected List<Sentence> splitTextIntoSentences(String text){
-        text = prepareText(text);
-        String[] sentences = text.split("(\\?|!|\\.)");         // –азбил текст на предложени€.
-        List<Sentence> listOfSentence = new LinkedList<Sentence>();
-        for(String sentence : sentences){
-            listOfSentence.add(new Sentence(sentence));
-        }
-        return listOfSentence;
-    }
 
-    /**
-     *
-     * @param sentence
-     * @return
-     */
-    protected List<Word> splitSentenceIntoWords(Sentence sentence) {
-        List<Word> wordList = new LinkedList<Word>();
-            String[] words = sentence.sentence.split(" ");   // разбиваем предложени€ на слова
 
-            for (int j = 0; j < words.length; j++) {      //проходим по словам
-                String word = words[j];
-                wordList.add(new Word(word));
-            }
 
-        return wordList;
-    }
 }

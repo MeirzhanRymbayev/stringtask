@@ -13,6 +13,23 @@ public class Text {
         this.textSentences = textSentences;
     }
 
+    /**
+     *
+     * @param text Text in file or some text
+     * @return
+     */
+    protected List<Sentence> splitTextIntoSentences(String text){
+        text = WorkWithText.prepareText(text);
+        String[] sentences = text.split("(\\?|!|\\.|\\.{3})");         // Разбил текст на предложения.
+        List<Sentence> listOfSentence = new LinkedList<Sentence>();
+
+        for(String sentence : sentences){
+            listOfSentence.add(new Sentence(sentence));
+        }
+
+        return listOfSentence;
+    }
+
 
 
 

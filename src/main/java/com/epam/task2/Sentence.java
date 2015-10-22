@@ -20,6 +20,23 @@ public class Sentence {
         }
     }
 
+    /**
+     *
+     * @param sentence
+     * @return
+     */
+    protected List<Word> splitSentenceIntoWords(Sentence sentence) {
+        List<Word> wordList = new LinkedList<Word>();
+        String[] words = sentence.sentence.split(" ");   // разбиваем предложения на слова
+
+        for (int j = 0; j < words.length; j++) {      //проходим по словам
+            String word = words[j];
+            wordList.add(new Word(word));
+        }
+
+        return wordList;
+    }
+
 
 
 
