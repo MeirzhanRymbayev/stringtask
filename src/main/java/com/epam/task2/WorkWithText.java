@@ -1,11 +1,11 @@
 package com.epam.task2;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -55,19 +55,22 @@ public class WorkWithText {
 
     /**
      * Method reverse first and last words in every sentence
-     * @param textFromFile
-     * @return
+     * @param textFromFile Some text
+     * @return Method returns text with reverse in first and last words in sentences
      */
     protected static List<Sentence> reverseWordsInSentences(Text textFromFile){
-        List<Sentence> reverseWordsInSentence = textFromFile.splitTextIntoSentences();
-        for(Sentence sentence : reverseWordsInSentence){
+        List<Sentence> afterReverseWordsInSentence = new LinkedList<Sentence>();
+        List<Sentence> beforeReverseWordsInSentence = textFromFile.splitTextIntoSentences();
+        for(Sentence sentence : beforeReverseWordsInSentence){
             List<Word> listOfWords = sentence.splitSentenceIntoWords();
-            for
+            Word firstWord = listOfWords.get(0);
+            Word lastWord = listOfWords.get(listOfWords.size() - 1);  // Тут была ошибка и я ее исправил! -1 от размера листа
+            listOfWords.set(0, lastWord);
+            listOfWords.set(listOfWords.size() - 1, firstWord);
+            afterReverseWordsInSentence.add(new Sentence(listOfWords));
         }
 
-
-
-
+        return afterReverseWordsInSentence;
     }
 
 

@@ -16,21 +16,24 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        String fileName = "D:\\File1.txt";
-        if (fileName.isEmpty()) {
+        String pathToFile = "D:\\File1.txt";
+        if (pathToFile.isEmpty()) {
             System.out.println("Поле пустое!"); // надо прикрутить сюда проверку значения. Исключение
         }
-        String textFromFile = WorkWithText.getTextFromFile(fileName);
+        String textInFile = WorkWithText.getTextFromFile(pathToFile);
 
-        Text text = new Text(textFromFile);   // здесь есть какой то текст из файла. Отредактированный
+        Text text = new Text(textInFile);   // здесь есть какой то текст из файла. Отредактированный
 
-        List<Sentence> reverseWordsInSentence = text.splitTextIntoSentences();
+        List<Sentence> list = WorkWithText.reverseWordsInSentences(text);
+        for(Sentence sentence : list){
+            System.out.println(sentence);
+        }
 
-        Word word = new Word("Спасибо");
+        /*Word word = new Word("Спасибо");
         List<Symbol> listOfSymbol = word.splitWordIntoSymbol();
         for (Symbol symbol : listOfSymbol) {
             System.out.println(symbol.symbol);
-        }
+        }*/
 
 
     }

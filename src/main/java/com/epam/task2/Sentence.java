@@ -23,7 +23,6 @@ public class Sentence {
     /**
      * This method splits the sentence into words
      *
-     *
      * @return
      */
     protected List<Word> splitSentenceIntoWords() {
@@ -36,6 +35,12 @@ public class Sentence {
         }
 
         return wordList;
+    }
+
+    @Override
+    public String toString() {
+
+        return sentence;
     }
 
 
