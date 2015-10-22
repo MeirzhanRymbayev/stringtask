@@ -21,7 +21,7 @@ public class Sentence {
     }
 
     /**
-     *
+     * This method splits the sentence into words
      * @param sentence
      * @return
      */
