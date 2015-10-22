@@ -18,11 +18,11 @@ public class Main {
 
         /*Path path = Paths.get("D:\\File1.txt");
     Charset charset = Charset.forName("UTF-8");
-        List<String> text = null;
+        List<String> textSentences = null;
         try {
-            text = Files.readAllLines(path, StandardCharsets.UTF_8);
+            textSentences = Files.readAllLines(path, StandardCharsets.UTF_8);
 
-            for (String line : text) {
+            for (String line : textSentences) {
                 System.out.println(line);
             }
         } catch (IOException e1) {
@@ -44,8 +44,8 @@ public class Main {
 
 
         WorkWithText workWithText = new WorkWithText();
-        Sentence sentence = new Sentence(workWithText.workText(text.toString())) ;
-        for (Word word : sentence.words){
+        Sentence sentence = new Sentence(workWithText.splitSentenceIntoWords(text.toString())) ;
+        for (Word word : sentence.wordsOfSentence){
             System.out.println(word.word);
         }
 
@@ -56,8 +56,8 @@ public class Main {
 
 
 
-        //System.out.println(text);
-        //String textInFile = text.toString();
+        //System.out.println(textSentences);
+        //String textInFile = textSentences.toString();
         //Pattern p = Pattern.compile(".+(\\?|!|\\.).*");
         //Matcher m = p.matcher(textInFile);
         //System.out.println(textInFile);
@@ -68,8 +68,8 @@ public class Main {
         //String[] sentences = textInFile.split("(\\?|!|\\.)");   // Разбил текст на предложения.
         //                                                        // Разбивается с потерей знаков препинания
         //textOfFile.addAll(Arrays.asList(sentences));
-        //for (String words : textOfFile) {
-        //    System.out.println(words);
+        //for (String wordsOfSentence : textOfFile) {
+        //    System.out.println(wordsOfSentence);
         //}
 
 

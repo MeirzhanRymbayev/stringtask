@@ -8,37 +8,51 @@ import java.util.List;
  */
 public class WorkWithText {
 
-    private List<Word> sentence = new LinkedList<Word>();
-    Text texT = new Text(new LinkedList<Sentence>());
+    private List<Word> sentenceWords = new LinkedList<Word>();
 
 
 
     /**
      *  Text will be prepared for work when this method will be called.
      *  Text will be trimmed and all space sequences will be replaced by one
-     * @param text text which will be prepared to work
-     * @return return prepared text
+     * @param textNeedPrepares textSentences which will be prepared to work
+     * @return return prepared textSentences
      */
-    private String prepareText(String text) {
-        text = text.trim();  // Обрезаем усики
-        text = text.replaceAll("\\s{2,}", " ");
-        return text;
+    private String prepareText(String textNeedPrepares) {
+        textNeedPrepares = textNeedPrepares.trim();  // Обрезаем усики
+        String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ");
+        return  preparedText;
     }
 
-    protected List<Word> workText(String text) {
+    /**
+     *
+     * @param text
+     * @return
+     */
+    protected List<Sentence> splitTextIntoSentences(String text){
         text = prepareText(text);
         String[] sentences = text.split("(\\?|!|\\.)");         // Разбил текст на предложения.
-        // Разбивается с потерей знаков препинания
-        for (int i = 0; i < sentences.length; i++) {      //проходим по предложениям
-            String[] words = sentences[i].split(" ");   // разбиваем предложения на слова
+        List<Sentence> listOfSentence = new LinkedList<Sentence>();
+        for(String sentence : sentences){
+            listOfSentence.add(new Sentence(sentence));
+        }
+        return listOfSentence;
+    }
+
+    /**
+     *
+     * @param sentence
+     * @return
+     */
+    protected List<Word> splitSentenceIntoWords(Sentence sentence) {
+        List<Word> wordList = new LinkedList<Word>();
+            String[] words = sentence.sentence.split(" ");   // разбиваем предложения на слова
 
             for (int j = 0; j < words.length; j++) {      //проходим по словам
                 String word = words[j];
-                sentence.add(new Word(word));           //в одной коллекции одно предложение
+                wordList.add(new Word(word));
             }
-            texT.text.add(new Sentence(sentence));      // здесь текст из предложении
 
-        }
-        return sentence;
+        return wordList;
     }
 }
