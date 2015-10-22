@@ -5,8 +5,12 @@ package com.epam.task2;
 Во всех задачах с формированием текста заменять табуляции и последовательности пробелов одним пробелом.
 */
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import com.epam.task2.WorkWithText;
 
 /**
  * Created by Meir on 21.10.2015.
@@ -14,37 +18,35 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        /*Path path = Paths.get("D:\\File1.txt");
-    Charset charset = Charset.forName("UTF-8");
-        List<String> textSentences = null;
-        try {
-            textSentences = Files.readAllLines(path, StandardCharsets.UTF_8);
+        String fileName = "D:\\File1.txt";
+        String textFromFile = WorkWithText.getTextFromFile(fileName);
 
-            for (String line : textSentences) {
-                System.out.println(line);
-            }
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }*/
+        Text text = new Text(textFromFile);
 
-        /*List<String> textOfFile = new ArrayList<String>();
-        String fileName1 = "D:\\File1.txt";
 
-        StringBuilder text = new StringBuilder("");
-
-        String line = null;
-        BufferedReader reader = new BufferedReader(new FileReader(fileName1));
-
-        while (reader.ready()) {
-            line = reader.readLine();
-            text = text.append(line);
-        } */
 
         Word word = new Word("Спасибо");
         List<Symbol> listOfSymbol = word.splitWordIntoSymbol();
         for(Symbol symbol : listOfSymbol){
             System.out.println(symbol.symbol);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //System.out.println(textSentences);
         //String textInFile = textSentences.toString();

@@ -10,6 +10,10 @@ public class Text {
     String text;
     List<Sentence> textSentences = new LinkedList<Sentence>();
 
+    public Text(String text){
+        this.text = text;
+    }
+
     public Text(List<Sentence> sentencesOfText){
         for(Sentence sentence : sentencesOfText){
             this.text += sentence.sentence + " ";

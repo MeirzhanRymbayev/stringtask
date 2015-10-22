@@ -1,5 +1,11 @@
 package com.epam.task2;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,9 +14,26 @@ import java.util.List;
  */
 public class WorkWithText {
 
-    private List<Word> sentenceWords = new LinkedList<Word>();
+    protected static String getTextFromFile(String pathToFile){
+        StringBuilder text = new StringBuilder("");  /*Чтобы сэкономить ресурсы кучи используем StringBuilder а не String */
 
-
+        String textInFile = null;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(pathToFile));
+            while (reader.ready()) {
+                textInFile = reader.readLine();
+                text = text.append(textInFile);
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");;
+        } catch (IOException e) {
+            System.out.println("IOException found!");;
+        }
+        textInFile = text.toString();
+        textInFile = prepareText(textInFile);
+        return textInFile;
+    }
 
     /**
      *  Text will be prepared for work when this method will be called.
@@ -19,6 +42,7 @@ public class WorkWithText {
      * @return return prepared textSentences
      */
     public static String prepareText(String textNeedPrepares) {
+
         textNeedPrepares = textNeedPrepares.trim();  // Обрезаем усики
         String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ");
         return  preparedText;

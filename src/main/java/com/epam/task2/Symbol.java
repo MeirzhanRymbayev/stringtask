@@ -12,4 +12,6 @@ public class Symbol {
     public Symbol (char charOfWord){
         symbol = String.valueOf(charOfWord);
     }
+
+
 }
