@@ -8,6 +8,8 @@ package com.epam.task2;
 /*5.	В каждом предложении текста поменять местами первое слово с последним, не изменяя длины предложения.*/
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,6 +17,16 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
+
+
+        /*LinkedList<Integer> list = new LinkedList<Integer>();
+        list.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        Integer first = list.getFirst();
+        Integer last = list.getLast();
+
+        list.set(0, last);
+        list.set(list.size() - 1, first);
+        System.out.println(list);*/
 
         String pathToFile = "D:\\File1.txt";
         if (pathToFile.isEmpty()) {
@@ -25,7 +37,7 @@ public class Main {
         Text text = new Text(textInFile);   // здесь есть какой то текст из файла. Отредактированный
 
         List<Sentence> list = WorkWithText.reverseWordsInSentences(text);
-        for(Sentence sentence : list){
+        for (Sentence sentence : list) {
             System.out.println(sentence);
         }
 

@@ -10,12 +10,12 @@ public class Text {
     String text;
     List<Sentence> textSentences = new LinkedList<Sentence>();
 
-    public Text(String text){
+    public Text(String text) {
         this.text = text;
     }
 
-    public Text(List<Sentence> sentencesOfText){
-        for(Sentence sentence : sentencesOfText){
+    public Text(List<Sentence> sentencesOfText) {
+        for (Sentence sentence : sentencesOfText) {
             this.text += sentence.sentence + " ";
             this.text.trim();
         }
@@ -23,22 +23,21 @@ public class Text {
 
     /**
      * This method splits the text into sentences
+     *
      * @return
      */
-    protected List<Sentence> splitTextIntoSentences(){
+    protected List<Sentence> splitTextIntoSentences() {
         this.text = WorkWithText.prepareText(this.text);
         /*–азбить текст если встречаютс€ знаки . ? ! ... */
         String[] sentences = this.text.split("(\\?|!|\\.|\\.{3})");
         List<Sentence> listOfSentence = new LinkedList<Sentence>();
 
-            for(String sentence : sentences){
-                listOfSentence.add(new Sentence(sentence));
-            }
+        for (String sentence : sentences) {
+            listOfSentence.add(new Sentence(sentence));
+        }
 
         return listOfSentence;
     }
-
-
 
 
 }

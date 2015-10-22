@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Meir on 21.10.2015.
  */
 public class Sentence {
-    String sentence;
+    String sentence = ""; // Тут был null, и почему то он выводился вместе с результатами
 
     public Sentence(String sentence) {
         this.sentence = sentence;
@@ -25,13 +25,12 @@ public class Sentence {
      *
      * @return
      */
-    protected List<Word> splitSentenceIntoWords() {
-        List<Word> wordList = new LinkedList<Word>();
+    protected LinkedList<Word> splitSentenceIntoWords() {
+        LinkedList<Word> wordList = new LinkedList<Word>();
         String[] words = this.sentence.split(" ");   // разбиваем предложения на слова
 
-        for (int j = 0; j < words.length; j++) {      //проходим по словам
-            String word = words[j];
-            wordList.add(new Word(word));
+        for (int i = 0; i < words.length; i++) {      //проходим по словам
+            wordList.add(new Word(words[i]));
         }
 
         return wordList;
@@ -39,7 +38,6 @@ public class Sentence {
 
     @Override
     public String toString() {
-
         return sentence;
     }
 
