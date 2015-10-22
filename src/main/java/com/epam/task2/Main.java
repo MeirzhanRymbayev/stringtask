@@ -19,9 +19,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         String fileName = "D:\\File1.txt";
+        if(fileName.isEmpty()){
+            System.out.println("Поле пустое!"); // надо прикрутить сюда проверку значения. Исключение
+        }
         String textFromFile = WorkWithText.getTextFromFile(fileName);
 
-        Text text = new Text(textFromFile);
+        Text text = new Text(textFromFile);   // здесь есть какой то текст из файла. Отредактированный
+
+
+
+
 
 
 

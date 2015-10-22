@@ -14,6 +14,11 @@ import java.util.List;
  */
 public class WorkWithText {
 
+    /**
+     * Method takes unformatted text from file then makes prepare to work with text
+     * @param pathToFile Path to file which contains text
+     * @return Return prepared text from file.
+     */
     protected static String getTextFromFile(String pathToFile){
         StringBuilder text = new StringBuilder("");  /*Чтобы сэкономить ресурсы кучи используем StringBuilder а не String */
 
@@ -47,6 +52,8 @@ public class WorkWithText {
         String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ");
         return  preparedText;
     }
+
+    
 
 
 
