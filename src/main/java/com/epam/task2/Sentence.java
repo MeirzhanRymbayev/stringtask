@@ -9,25 +9,26 @@ import java.util.List;
 public class Sentence {
     String sentence;
 
-    public Sentence(String sentence){
+    public Sentence(String sentence) {
         this.sentence = sentence;
     }
 
     public Sentence(List<Word> wordsOfSentence) {
-        for(Word word : wordsOfSentence){
-            sentence += word.word + " ";
-            sentence.trim();
+        for (Word word : wordsOfSentence) {
+            this.sentence += word.word + " ";
+            this.sentence.trim();
         }
     }
 
     /**
      * This method splits the sentence into words
-     * @param sentence
+     *
+     *
      * @return
      */
-    protected List<Word> splitSentenceIntoWords(Sentence sentence) {
+    protected List<Word> splitSentenceIntoWords() {
         List<Word> wordList = new LinkedList<Word>();
-        String[] words = sentence.sentence.split(" ");   // разбиваем предложения на слова
+        String[] words = this.sentence.split(" ");   // разбиваем предложения на слова
 
         for (int j = 0; j < words.length; j++) {      //проходим по словам
             String word = words[j];
@@ -36,8 +37,6 @@ public class Sentence {
 
         return wordList;
     }
-
-
 
 
 }

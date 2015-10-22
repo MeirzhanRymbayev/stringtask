@@ -12,20 +12,19 @@ public class Text {
 
     public Text(List<Sentence> sentencesOfText){
         for(Sentence sentence : sentencesOfText){
-            text += sentence.sentence + " ";
-            text.trim();
+            this.text += sentence.sentence + " ";
+            this.text.trim();
         }
     }
 
     /**
      * This method splits the text into sentences
-     * @param text Text in file or some text
      * @return
      */
-    protected List<Sentence> splitTextIntoSentences(String text){
-        text = WorkWithText.prepareText(text);
+    protected List<Sentence> splitTextIntoSentences(){
+        this.text = WorkWithText.prepareText(this.text);
         /*–азбить текст если встречаютс€ знаки . ? ! ... */
-        String[] sentences = text.split("(\\?|!|\\.|\\.{3})");
+        String[] sentences = this.text.split("(\\?|!|\\.|\\.{3})");
         List<Sentence> listOfSentence = new LinkedList<Sentence>();
 
             for(String sentence : sentences){

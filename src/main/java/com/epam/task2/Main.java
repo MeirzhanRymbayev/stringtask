@@ -4,10 +4,8 @@ package com.epam.task2;
 Символ, Слово, Предложение, Знак препинания и др.
 Во всех задачах с формированием текста заменять табуляции и последовательности пробелов одним пробелом.
 */
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +27,7 @@ public class Main {
             e1.printStackTrace();
         }*/
 
-        List<String> textOfFile = new ArrayList<String>();
+        /*List<String> textOfFile = new ArrayList<String>();
         String fileName1 = "D:\\File1.txt";
 
         StringBuilder text = new StringBuilder("");
@@ -40,21 +38,13 @@ public class Main {
         while (reader.ready()) {
             line = reader.readLine();
             text = text.append(line);
+        } */
+
+        Word word = new Word("Спасибо");
+        List<Symbol> listOfSymbol = word.splitWordIntoSymbol();
+        for(Symbol symbol : listOfSymbol){
+            System.out.println(symbol.symbol);
         }
-
-
-        WorkWithText workWithText = new WorkWithText();
-        Sentence sentence = new Sentence(workWithText.splitSentenceIntoWords(text.toString())) ;
-        for (Word word : sentence.wordsOfSentence){
-            System.out.println(word.word);
-        }
-
-
-
-
-
-
-
 
         //System.out.println(textSentences);
         //String textInFile = textSentences.toString();
