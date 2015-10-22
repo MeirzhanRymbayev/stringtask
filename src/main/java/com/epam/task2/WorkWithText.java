@@ -46,14 +46,31 @@ public class WorkWithText {
      * @param textNeedPrepares textSentences which will be prepared to work
      * @return return prepared textSentences
      */
-    public static String prepareText(String textNeedPrepares) {
+    protected static String prepareText(String textNeedPrepares) {
 
         textNeedPrepares = textNeedPrepares.trim();  // Обрезаем усики
         String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ");
         return  preparedText;
     }
 
-    
+    /**
+     * Method reverse first and last words in every sentence
+     * @param textFromFile
+     * @return
+     */
+    protected static List<Sentence> reverseWordsInSentences(Text textFromFile){
+        List<Sentence> reverseWordsInSentence = textFromFile.splitTextIntoSentences();
+        for(Sentence sentence : reverseWordsInSentence){
+            List<Word> listOfWords = sentence.splitSentenceIntoWords();
+            for
+        }
+
+
+
+
+    }
+
+
 
 
 
