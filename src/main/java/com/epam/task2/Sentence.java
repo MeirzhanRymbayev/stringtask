@@ -7,15 +7,15 @@ import java.util.List;
  * Created by Meir on 21.10.2015.
  */
 public class Sentence {
-    String sentence = ""; // Тут был null, и почему то он выводился вместе с результатами
+    String sentence = ""; // РўСѓС‚ Р±С‹Р» null, Рё РїРѕС‡РµРјСѓ С‚Рѕ РѕРЅ РІС‹РІРѕРґРёР»СЃСЏ РІРјРµСЃС‚Рµ СЃ СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё
 
     public Sentence(String sentence) {
         this.sentence = sentence;
     }
 
-    public Sentence(List<Word> wordsOfSentence) {
-        for (Word word : wordsOfSentence) {
-            this.sentence += word.word + " ";
+    public Sentence(LinkedList<Word> wordsOfSentence) {
+        for (Word words : wordsOfSentence) {
+            this.sentence += words.word + " ";
             this.sentence.trim();
         }
     }
@@ -27,19 +27,15 @@ public class Sentence {
      */
     protected LinkedList<Word> splitSentenceIntoWords() {
         LinkedList<Word> wordList = new LinkedList<Word>();
-        String[] words = this.sentence.split(" ");   // разбиваем предложения на слова
+        String[] words = this.sentence.split(" ");   // СЂР°Р·Р±РёРІР°РµРј РїСЂРµРґР»РѕР¶РµРЅРёСЏ РЅР° СЃР»РѕРІР°
 
-        for (int i = 0; i < words.length; i++) {      //проходим по словам
+        for (int i = 0; i < words.length; i++) {      //РїСЂРѕС…РѕРґРёРј РїРѕ СЃР»РѕРІР°Рј
             wordList.add(new Word(words[i]));
         }
-
         return wordList;
     }
 
-    @Override
-    public String toString() {
-        return sentence;
-    }
+
 
 
 }

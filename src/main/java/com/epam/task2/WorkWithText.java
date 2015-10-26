@@ -1,9 +1,9 @@
 package com.epam.task2;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,65 +15,73 @@ public class WorkWithText {
     /**
      * Method takes unformatted text from file then makes prepare to work with text
      *
-     * @param pathToFile Path to file which contains text
      * @return Return prepared text from file.
      */
-    protected static String getTextFromFile(String pathToFile) {
-        StringBuilder text = new StringBuilder("");  /*Чтобы сэкономить ресурсы кучи используем StringBuilder а не String */
-
-        String textInFile = null;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(pathToFile));
-            while (reader.ready()) {
-                textInFile = reader.readLine();
-                text = text.append(textInFile);
+    protected static List<String> getTextFromFile() {
+        List<String> textRead = null;
+        BufferedReader reader;
+        String pathToFile;
+        boolean checkPathToFile = false;
+            while(checkPathToFile != true) {
+                    reader = new BufferedReader(new InputStreamReader(System.in));
+                    try {
+                        pathToFile = reader.readLine();
+                        if (pathToFile.isEmpty()) {
+                            System.out.println("РџРѕР»Рµ РїСѓСЃС‚РѕРµ!"); // РЅР°РґРѕ РїСЂРёРєСЂСѓС‚РёС‚СЊ СЃСЋРґР° РїСЂРѕРІРµСЂРєСѓ Р·РЅР°С‡РµРЅРёСЏ. РСЃРєР»СЋС‡РµРЅРёРµ
+                        } else {
+                            textRead = Files.readAllLines(Paths.get(pathToFile), Charset.defaultCharset());
+                        }
+                    } catch (FileNotFoundException e) {
+                        System.out.println("File not found!");
+                    } catch (IOException e) {
+                        System.out.println("IOException found!");
+                    }
+                    if(textRead != null) break;
             }
-            reader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
-            ;
-        } catch (IOException e) {
-            System.out.println("IOException found!");
-            ;
-        }
-        textInFile = text.toString();
-        textInFile = prepareText(textInFile);
-        return textInFile;
+        return textRead;
     }
 
     /**
      * Text will be prepared for work when this method will be called.
      * Text will be trimmed and all space sequences will be replaced by one
      *
-     * @param textNeedPrepares textSentences which will be prepared to work
-     * @return return prepared textSentences
+     * @param textNeedPrepares textLines which will be prepared to work
+     * @return return prepared textLines
      */
     protected static String prepareText(String textNeedPrepares) {
-
-        textNeedPrepares = textNeedPrepares.trim();  // Обрезаем усики
-        String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ");
+        textNeedPrepares = textNeedPrepares.trim();  // РћР±СЂРµР·Р°РµРј СѓСЃРёРєРё
+        String preparedText = textNeedPrepares.replaceAll("\\s{2,}", " ").replaceAll("\\t{2,}", " ");
         return preparedText;
     }
 
     /**
      * Method reverse first and last words in every sentence
      *
-     * @param textFromFile Some text
      * @return Method returns text with reverse in first and last words in sentences
      */
-    protected static List<Sentence> reverseWordsInSentences(Text textFromFile) {
+    protected static List<Sentence> reverseFirstLastWordsInSentences() {
         List<Sentence> afterReverseWordsInSentence = new LinkedList<Sentence>();
-        List<Sentence> beforeReverseWordsInSentence = textFromFile.splitTextIntoSentences();
-        for (Sentence sentence : beforeReverseWordsInSentence) {
-            LinkedList<Word> listOfWords = sentence.splitSentenceIntoWords();
-            Word lastWord = listOfWords.removeLast();
-            Word firstWord = listOfWords.removeFirst();
-            listOfWords.addFirst(lastWord);
-            listOfWords.addLast(firstWord);
-            afterReverseWordsInSentence.add(new Sentence(listOfWords));
-        }
+        List<Paragraph> paragraphsList;
+        List<Sentence> sentencesList;
+        LinkedList<Word> listOfWords;
 
+
+        Text textFromFile = new Text(WorkWithText.getTextFromFile());
+        paragraphsList = textFromFile.splitTextIntoParagraphs();
+        for (Paragraph paragraph : paragraphsList) {
+            sentencesList = paragraph.splitParagraphIntoSentences();
+            for(Sentence sentence : sentencesList){
+                listOfWords = sentence.splitSentenceIntoWords();
+                int indexOfLastWord = listOfWords.size() - 1;
+                Word firstWord = new Word(listOfWords.getFirst().word);
+                Word lastWord = new Word(listOfWords.getLast().word);
+                listOfWords.set(0, lastWord);
+                listOfWords.set(indexOfLastWord, firstWord);
+                afterReverseWordsInSentence.add(new Sentence(listOfWords));
+            }
+        }
         return afterReverseWordsInSentence;
+
     }
 
 

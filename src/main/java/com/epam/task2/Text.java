@@ -7,18 +7,11 @@ import java.util.List;
  * Created by Meir on 21.10.2015.
  */
 public class Text {
-    String text;
-    List<Sentence> textSentences = new LinkedList<Sentence>();
+    List<String> textLines = new LinkedList<String>();
 
-    public Text(String text) {
-        this.text = text;
-    }
 
-    public Text(List<Sentence> sentencesOfText) {
-        for (Sentence sentence : sentencesOfText) {
-            this.text += sentence.sentence + " ";
-            this.text.trim();
-        }
+    public Text(List<String> paragraphsOfText) {
+        this.textLines = paragraphsOfText;
     }
 
     /**
@@ -26,18 +19,23 @@ public class Text {
      *
      * @return
      */
-    protected List<Sentence> splitTextIntoSentences() {
-        this.text = WorkWithText.prepareText(this.text);
-        /*–азбить текст если встречаютс€ знаки . ? ! ... */
-        String[] sentences = this.text.split("(\\?|!|\\.|\\.{3})");
-        List<Sentence> listOfSentence = new LinkedList<Sentence>();
+    protected List<Paragraph> splitTextIntoParagraphs() {
+        List<Paragraph> listOfParagraphs = new LinkedList<Paragraph>();
+        List<String> preparedParagraphLines = new LinkedList<String>(this.textLines);
 
-        for (String sentence : sentences) {
-            listOfSentence.add(new Sentence(sentence));
-        }
-
-        return listOfSentence;
+            for(String stringFromTextList : this.textLines){
+                if(stringFromTextList.equals("")){
+                    preparedParagraphLines.remove(stringFromTextList); // here empty string will be deleted
+                }
+            }
+            for(String notPreparedParagraph : preparedParagraphLines) {
+                String preparedParagraph = WorkWithText.prepareText(notPreparedParagraph);
+                listOfParagraphs.add(new Paragraph(preparedParagraph));
+            }
+        return listOfParagraphs;
     }
+
+
 
 
 }
