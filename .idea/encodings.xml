@@ -6,7 +6,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/epam/task2/Sentence.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/epam/task2/Symbol.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/epam/task2/Text.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/task2/Word.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/task2/Token/Word.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/epam/task2/WorkWithText.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

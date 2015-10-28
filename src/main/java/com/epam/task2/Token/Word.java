@@ -1,4 +1,6 @@
-package com.epam.task2;
+package com.epam.task2.Token;
+
+import com.epam.task2.Symbol;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,27 +8,27 @@ import java.util.List;
 /**
  * Created by Meir on 21.10.2015.
  */
-public class Word {
-    protected String word;
+public class Word extends Token {
 
-    public Word(String word) {
-        this.word = word;
-    }
+    private List<Symbol> symbols;
 
     public Word(List<Symbol> listOfSymbol) {
+        symbols = new LinkedList<Symbol>();
         for (Symbol symbol : listOfSymbol) {
-            this.word = this.word + symbol.symbol;
+            for (Symbol symbol1 : listOfSymbol) {
+                symbols.add(symbol);
+            }
         }
     }
 
-    protected List<Symbol> splitWordIntoSymbol() {
+    /*protected List<Symbol> splitWordIntoSymbol() {
         List<Symbol> symbolList = new LinkedList<Symbol>();
-        char[] wordsCharArray = this.word.toCharArray();
+        char[] wordsCharArray = this.symbols.toCharArray();
         for (char charOfWord : wordsCharArray) {
 
             symbolList.add(new Symbol(charOfWord));
         }
         return symbolList;
-    }
+    }*/
 
 }

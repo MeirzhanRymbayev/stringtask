@@ -1,5 +1,7 @@
 package com.epam.task2;
 
+import com.epam.task2.Token.Word;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -73,8 +75,8 @@ public class WorkWithText {
             for(Sentence sentence : sentencesList){
                 listOfWords = sentence.splitSentenceIntoWords();
                 int indexOfLastWord = listOfWords.size() - 1;
-                Word firstWord = new Word(listOfWords.getFirst().word);
-                Word lastWord = new Word(listOfWords.getLast().word);
+                Word firstWord = new Word(listOfWords.getFirst().symbols);
+                Word lastWord = new Word(listOfWords.getLast().symbols);
                 listOfWords.set(0, lastWord);
                 listOfWords.set(indexOfLastWord, firstWord);
                 afterReverseWordsInSentence.add(new Sentence(listOfWords));

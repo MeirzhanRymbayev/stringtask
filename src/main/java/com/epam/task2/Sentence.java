@@ -1,5 +1,8 @@
 package com.epam.task2;
 
+import com.epam.task2.Token.Token;
+import com.epam.task2.Token.Word;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,15 +10,18 @@ import java.util.List;
  * Created by Meir on 21.10.2015.
  */
 public class Sentence {
-    String sentence = ""; // Тут был null, и почему то он выводился вместе с результатами
+    private List<Token> tokens;
 
-    public Sentence(String sentence) {
-        this.sentence = sentence;
+    public Sentence(List<Token> listOfTokens) {
+        tokens  = new LinkedList<Token>();
+        for (Token token : listOfTokens) {
+            this.tokens.add(token);
+        }
     }
 
     public Sentence(LinkedList<Word> wordsOfSentence) {
         for (Word words : wordsOfSentence) {
-            this.sentence += words.word + " ";
+            this.sentence += words.symbols + " ";
             this.sentence.trim();
         }
     }
@@ -25,7 +31,7 @@ public class Sentence {
      *
      * @return
      */
-    protected LinkedList<Word> splitSentenceIntoWords() {
+    /*protected LinkedList<Word> splitSentenceIntoWords() {
         LinkedList<Word> wordList = new LinkedList<Word>();
         String[] words = this.sentence.split(" ");   // разбиваем предложения на слова
 
@@ -33,7 +39,7 @@ public class Sentence {
             wordList.add(new Word(words[i]));
         }
         return wordList;
-    }
+    }*/
 
 
 
