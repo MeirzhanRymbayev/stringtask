@@ -1,4 +1,6 @@
-package com.epam.task2;
+package com.epam.task2.elem;
+
+import com.epam.task2.WorkWithText;
 
 import java.util.LinkedList;
 import java.util.List;

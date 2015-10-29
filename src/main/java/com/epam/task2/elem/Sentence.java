@@ -1,7 +1,7 @@
-package com.epam.task2;
+package com.epam.task2.elem;
 
-import com.epam.task2.Token.Token;
-import com.epam.task2.Token.Word;
+import com.epam.task2.elem.token.Token;
+import com.epam.task2.elem.token.Word;
 
 import java.util.LinkedList;
 import java.util.List;

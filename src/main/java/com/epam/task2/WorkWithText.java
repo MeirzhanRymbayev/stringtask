@@ -1,6 +1,9 @@
 package com.epam.task2;
 
-import com.epam.task2.Token.Word;
+import com.epam.task2.elem.Paragraph;
+import com.epam.task2.elem.Sentence;
+import com.epam.task2.elem.Text;
+import com.epam.task2.elem.token.Word;
 
 import java.io.*;
 import java.nio.charset.Charset;

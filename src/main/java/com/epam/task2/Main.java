@@ -7,9 +7,9 @@ package com.epam.task2;
 
 /*5.	В каждом предложении текста поменять местами первое слово с последним, не изменяя длины предложения.*/
 
-import java.io.BufferedReader;
+import com.epam.task2.elem.Sentence;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -17,10 +17,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        List<Sentence> reversedSentences = WorkWithText.reverseFirstLastWordsInSentences();
-        for (Sentence sentence : reversedSentences) {
-            System.out.println(sentence.sentence);
-        }
+
     }
 
 }

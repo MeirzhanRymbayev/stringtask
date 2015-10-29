@@ -1,6 +1,6 @@
-package com.epam.task2.Token;
+package com.epam.task2.elem.token;
 
-import com.epam.task2.Symbol;
+import com.epam.task2.elem.Symbol;
 
 import java.util.LinkedList;
 import java.util.List;

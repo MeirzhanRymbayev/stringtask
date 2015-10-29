@@ -1,4 +1,4 @@
-package com.epam.task2;
+package com.epam.task2.elem;
 
 /**
  * Created by Meir on 21.10.2015.

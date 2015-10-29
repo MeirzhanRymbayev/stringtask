@@ -1,4 +1,4 @@
-package com.epam.task2.Token;
+package com.epam.task2.elem.token;
 
 /**
  * Created by Meir on 21.10.2015.
